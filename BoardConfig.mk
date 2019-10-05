@@ -17,27 +17,16 @@ TARGET_CPU_VARIANT := cortex-a53
 TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := exynos8890-hero2lte_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/universal8890
-
-# Image
+TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_CUSTOM_BOOTIMG_MK :=  $(DEVICE_TREE)/mkbootimg.mk
-BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_KERNEL_SEPARATED_DT := true
-# 000RU = recovery kernel, 000KU = system kernel
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board SRPOI30A000RU
-TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/herolte/include
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/dt.img
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -56,12 +45,17 @@ TW_DEFAULT_BRIGHTNESS := 162
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_NTFS_3G := true
+TW_USE_NEW_MINADBD := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_EXCLUDE_TWRPAPP := true
+TW_DEVICE_VERSION := MoRo-1.2
 
 # exFAT drivers included in the kernel
 TW_NO_EXFAT_FUSE := true
 
 # Encryption support
 TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE := true
 
 # Asian region languages
 TW_EXTRA_LANGUAGES := true
