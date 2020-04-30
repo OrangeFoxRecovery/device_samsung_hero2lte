@@ -23,6 +23,8 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
+LZMA_COMPRESSION := -9
+LZMA_RAMDISK_TARGETS := recovery
 TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -59,3 +61,22 @@ TW_INCLUDE_FBE := true
 
 # Asian region languages
 TW_EXTRA_LANGUAGES := true
+
+#SHRP_Variables
+SHRP_PATH := device/samsung/hero2lte
+SHRP_MAINTAINER := Morogoku
+SHRP_DEVICE_CODE := hero2lte
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usbotg
+SHRP_REC := /dev/block/platform/155a0000.ufs/by-name/RECOVERY
+SHRP_REC_TYPE := normal
+SHRP_AB := false
+SHRP_DEVICE_TYPE := A-Only
+SHRP_FLASH := 1
+SHRP_CUSTOM_FLASHLIGHT := true
+SHRP_FONP_1 := /sys/devices/virtual/camera/flash/rear_flash
+SHRP_FLASH_MAX_BRIGHTNESS := 1
+SHRP_EXPRESS := true
+
