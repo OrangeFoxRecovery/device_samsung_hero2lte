@@ -29,9 +29,10 @@ Then run `repo sync` to check it out.
 To build:
 
 ```sh
+export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch omni_hero2lte-eng
-make -j8 recoveryimage
+mka recoveryimage
 ```
 
-Kernel sources are available at: https://github.com/exynos-linux-stable/hero2lte
+Kernel sources are available at: https://github.com/morogoku/android_kernel_samsung_universal8890/tree/twrp
