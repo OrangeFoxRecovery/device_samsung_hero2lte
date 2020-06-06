@@ -51,6 +51,7 @@ TW_USE_NEW_MINADBD := true
 BOARD_HAS_NO_REAL_SDCARD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_FORCE_USE_BUSYBOX := true
+TW_INCLUDE_RESETPROP := true
 TW_DEVICE_VERSION := MoRo-1.3
 
 # exFAT drivers included in the kernel
