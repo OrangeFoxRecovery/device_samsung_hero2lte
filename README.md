@@ -20,7 +20,7 @@ Add to `.repo/local_manifests/hero2lte.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="SHRP-Devices/android_device_samsung_hero2lte" path="device/samsung/hero2lte" remote="github" revision="android-9.0" />
+  <project name="SHRP-Devices/android_device_samsung_hero2lte" path="device/samsung/hero2lte" remote="github" revision="shrp" />
 </manifest>
 ```
 
