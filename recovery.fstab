@@ -11,4 +11,5 @@
 /efs			ext4	/dev/block/platform/155a0000.ufs/by-name/EFS		flags=backup=1;display="EFS"
 
 /external_sd		vfat	/dev/block/mmcblk0p1 /dev/block/mmcblk0			flags=display="Micro SDcard";storage;wipeingui;removable
+/storage		ext4	/data/media/0						flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
 /usb-otg		vfat	/dev/block/sde1 /dev/block/sde				flags=display="USB-OTG";storage;wipeingui;removable
