@@ -1,4 +1,0 @@
-# Universal8890
-ro.chipname=exynos8890
-ro.arch=exynos8890
-persist.sys.usb.config=mtp,adb
