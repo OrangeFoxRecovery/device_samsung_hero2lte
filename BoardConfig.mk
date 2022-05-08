@@ -1,12 +1,20 @@
-DEVICE_TREE := device/samsung/hero2lte
+#
+# Copyright (C) 2022 The OrangeFox Recovery Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-# Bootloader
-BOARD_VENDOR := samsung
-TARGET_BOARD_PLATFORM := exynos5
-TARGET_SOC := exynos8890
-TARGET_BOOTLOADER_BOARD_NAME := universal8890
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
+DEVICE_PATH := device/samsung/hero2lte
 
 # Architecture
 TARGET_ARCH := arm64
@@ -23,23 +31,40 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
-LZMA_COMPRESSION := -9
-LZMA_RAMDISK_TARGETS := recovery
-TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/dt.img
+BOARD_MKBOOTIMG_ARGS := \
+	--kernel_offset 0x00008000 \
+	--ramdisk_offset 0x01000000 \
+	--tags_offset 0x00000100 \
+	--dt $(DEVICE_PATH)/prebuilt/dt.img
+
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := universal8890
+
+# Platform
+TARGET_BOARD_PLATFORM := exynos5
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# TWRP specific build flags
-RECOVERY_VARIANT := twrp
-TW_THEME := portrait_hdpi
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+
+# Recovery
+LZMA_COMPRESSION := -9
+LZMA_RAMDISK_TARGETS := recovery
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
+# TWRP specific build flags
+TW_THEME := portrait_hdpi
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/15400000.usb/15400000.dwc3/gadget/lun%d/file"
 TW_BRIGHTNESS_PATH := "/sys/devices/13900000.dsim/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
@@ -53,35 +78,4 @@ BOARD_HAS_NO_REAL_SDCARD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_FORCE_USE_BUSYBOX := true
 TW_INCLUDE_RESETPROP := true
-TW_DEVICE_VERSION := MoRo-1.6
-
-# Encryption support
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_FBE := true
-
-# Asian region languages
 TW_EXTRA_LANGUAGES := true
-
-#SHRP_Variables
-SHRP_PATH := device/samsung/hero2lte
-SHRP_MAINTAINER := Morogoku
-SHRP_DEVICE_CODE := hero2lte
-SHRP_EDL_MODE := 0
-SHRP_EXTERNAL := /external_sd
-SHRP_INTERNAL := /sdcard
-SHRP_OTG := /usb-otg
-SHRP_FLASH := 1
-SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP_1 := /sys/devices/virtual/camera/flash/rear_flash
-SHRP_FONP_2 :=
-SHRP_FONP_3 :=
-SHRP_FLASH_MAX_BRIGHTNESS := 1
-SHRP_REC := /dev/block/platform/155a0000.ufs/by-name/RECOVERY
-SHRP_AB := false
-SHRP_REC_TYPE := Normal
-SHRP_DEVICE_TYPE := A_Only
-SHRP_EXPRESS := true
-SHRP_OFFICIAL := true
-SHRP_DARK := true
-SHRP_ALT_REBOOT := true
-
