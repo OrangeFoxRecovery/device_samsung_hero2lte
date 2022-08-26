@@ -14,14 +14,18 @@
 # limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
-## Device identifier. This must come after all inclusions
+# Inherit from hero2lte device
+$(call inherit-product, device/samsung/hero2lte/device.mk)
+
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := hero2lte
-PRODUCT_NAME := omni_hero2lte
+PRODUCT_NAME := twrp_hero2lte
 PRODUCT_BRAND := samsung
+PRODUCT_MODEL := SM-G935F
 PRODUCT_MANUFACTURER := samsung

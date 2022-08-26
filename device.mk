@@ -14,8 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_hero2lte.mk
-
-COMMON_LUNCH_CHOICES := \
-    twrp_hero2lte-eng
+LOCAL_PATH := device/samsung/hero2lte

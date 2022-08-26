@@ -61,7 +61,6 @@ LZMA_COMPRESSION := -9
 LZMA_RAMDISK_TARGETS := recovery
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi

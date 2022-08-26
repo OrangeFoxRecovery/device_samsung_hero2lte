@@ -1,0 +1,11 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#<src>                  <mnt_point>         <type>    <mnt_flags and options>                               <fs_mgr_flags>
+
+/dev/block/platform/155a0000.ufs/by-name/SYSTEM		/system		ext4		ro,errors=panic,noload												wait,recoveryonly
+
+/dev/block/platform/155a0000.ufs/by-name/USERDATA	/data		ext4		noatime,nosuid,nodev,noauto_da_alloc,discard,journal_async_commit,data=ordered,errors=panic			wait,check,quota,encryptable=/dev/block/platform/155a0000.ufs/by-name/TOMBSTONES,latemount,reservedsize=128M
+
+/dev/block/platform/155a0000.ufs/by-name/OTA		/misc		emmc		defaults													defaults
